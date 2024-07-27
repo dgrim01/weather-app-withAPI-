@@ -121,6 +121,7 @@ def display_weather_info(weather_data, imperial=False):
     weather_id = weather_data["weather"][0]["id"]
     weather_description = weather_data["weather"][0]["description"]
     temperature = weather_data["main"]["temp"]
+    feels_like = weather_data["main"]["feels_like"]
 
     style.change_color(style.REVERSE)
     print(f"{city:^{style.PADDING}}", end="")
@@ -136,7 +137,9 @@ def display_weather_info(weather_data, imperial=False):
     )
     style.change_color(style.RESET)
 
-    print(f"({temperature}°{'F' if imperial else 'C'})")
+    print(f" Current temp: ({temperature}°{'F' if imperial else 'C'})")
+
+    print(f" Feels like: ({feels_like}°{'F' if imperial else 'C'})")
 
 
 def _select_weather_display_params(weather_id):
